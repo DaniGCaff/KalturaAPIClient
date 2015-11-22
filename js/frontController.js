@@ -16,10 +16,13 @@ $(document).ready(function() {
 	$("#select-category").change(function() {
 		cargarFront($(this).val());
 	});
-	
-	$(document.body).on("click", ".video", function() {
-		cargarReproductor($(this).attr("id"));
-	});
+
+    $(document.body).on("click", ".video", function() {
+    	cargarReproductor($(this).attr("id"));
+        imprimirTitulo($(this).attr("data-name"));
+        $(".active").removeClass("active");
+        $(this).parent().parent().addClass("active");
+    });
 });
 
 function cargarFront(categoryActual) {
@@ -42,6 +45,8 @@ function listarVideos(entryIds) {
               $("#videos").append(imprimirThumb(entryIds[this.indexValue].entryId, url, entryIds[this.indexValue].name, entryIds[this.indexValue].duration));
 			if(this.indexValue == 0) {
                 cargarReproductor(entryIds[this.indexValue].entryId);
+                imprimirTitulo(entryIds[this.indexValue].name);
+                $(".video").parent().parent().addClass("active");
 			}
 		  }
 		}}); 
@@ -50,15 +55,21 @@ function listarVideos(entryIds) {
 
 function imprimirThumb(id, url, name, duration) {
     duration = Math.floor(duration / 60) + ":" + (duration % 60 < 10 ? '0' + duration % 60 : duration % 60);
-    return '<div class="media">' +
-        '<div class="media-left"> ' +
-        '<img id=\"' + id + '\" src=\"' + url + '\" class=\"video media-object\"/>' +
-        '</div>' +
-        '<div class="media-body"> ' +
-        '<h4 class="media-heading">' + name + '</h4> ' +
-        '<p class="lead small">' + duration + '</p>' +
-        '</div>' +
-        '</div>';
+    return '<div class="media" >' +
+                '<div class="media-left media-middle">'+
+                    '<img id=\"' + id + '\" data-name="'+ name +'" src=\"' + url + '\" class=\"video media-object\" />' +
+                '</div>' +
+                '<div class="media-body"> ' +
+                    '<h1 class="media-heading small">' + name + '</h1> ' +
+                    '<p class="lead small">' + duration + '</p>' +
+                '</div>' +
+            '</div>';
+}
+
+
+
+function imprimirTitulo(nombre){
+    $("#titulo").html(nombre);
 }
 
 function cargarReproductor(entryId) {

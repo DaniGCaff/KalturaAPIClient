@@ -38,6 +38,11 @@ final class KalturaWrapper {
         echo "<iframe class=\"embed-responsive-item\" src=\"" . self::$kalturaURL . "/p/" . self::$partnerId . "/sp/" . self::$partnerId . "00/embedIframeJs/uiconf_id/" . $this->uiConf . "/partner_id/" . self::$partnerId . "?iframeembed=true&playerId=" . $this->uiConf . "&entry_id=" . $entryId . "\" width=\"400\" height=\"330\" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder=\"0\"></iframe>";
 	}
 
+    public function printDescription($entryId)
+    {
+        echo "<p class=\"lead\">";
+    }
+
 	public function printThumb($entryId)
 	{
 		echo self::$kalturaURL."/p/". self::$partnerId ."/thumbnail/entry_id/". $entryId;

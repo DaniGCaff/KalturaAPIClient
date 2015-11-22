@@ -1,0 +1,32 @@
+h1{
+    font-size: 16px!important;
+    -webkit-margin-before: 1em!important;
+    -webkit-margin-after: 1em!important;
+}
+
+h1, h2, p{
+    cursor: default;
+}
+
+.video{
+    cursor: hand;
+}
+
+.active{
+    background-color: #e0e0e0!important;
+    border: 1px solid #bcbcbc!important;
+}
+
+.active h1, .active p{
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.media{
+    margin-top: 0!important;
+}
+
+#video-container{
+    padding: 0;
+    background-color: #000000;
+}

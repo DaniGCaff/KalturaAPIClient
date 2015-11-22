@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/front_upm.css" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -20,48 +20,25 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
             <a class="navbar-brand" href="#">Front UPM</a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Todas las categorías<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
         </div>
     </div>
 </nav>
 <div class="container">
     <div class="row">
-        <div class="col-lg-7 col-md-7">
+        <div class="col-lg-7 col-md-8">
             <div class="well well-lg text-center">
-                <h2>Front UPM</h2>
+                <h2 id="titulo"></h2>
 
             </div>
             <div id="video-player" class="embed-responsive embed-responsive-16by9">
 
             </div>
         </div>
-        <div class="col-lg-5 col-md-5">
+        <div class="col-lg-5 col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <select class="left" id="select-category"></select>
-                    <img src="img/LogoEtsisi.png" class="img-thumbnail img-responsive right">
                 </div>
                 <div class="panel-body">
                     <div id="videos"></div>
