@@ -34,21 +34,32 @@ function cargarFront(categoryActual) {
 function listarVideos(entryIds) {
 	$("#videos").html("");
 	for(index in entryIds) {
-		$.ajax( {url: "php/Backend.php?action=printThumb&arg0="+entryIds[index], indexValue: index, success: function( url ) {
+        $.ajax({
+            url: "php/Backend.php?action=printThumb&arg0=" + entryIds[index].entryId,
+            indexValue: index,
+            success: function (url) {
 		  if(url) {
-			$("#videos").append(imprimirThumb(entryIds[this.indexValue], url));
+              $("#videos").append(imprimirThumb(entryIds[this.indexValue].entryId, url, entryIds[this.indexValue].name, entryIds[this.indexValue].duration));
 			if(this.indexValue == 0) {
-				cargarReproductor(entryIds[this.indexValue]);
+                cargarReproductor(entryIds[this.indexValue].entryId);
 			}
 		  }
 		}}); 
 	}
 }
 
-function imprimirThumb(id, url) {
-	return '<img id="'+id+'" src="'+url+'" class="video"/>';
+function imprimirThumb(id, url, name, duration) {
+    duration = Math.floor(duration / 60) + ":" + (duration % 60 < 10 ? '0' + duration % 60 : duration % 60);
+    return '<div class="media">' +
+        '<div class="media-left"> ' +
+        '<img id=\"' + id + '\" src=\"' + url + '\" class=\"video media-object\"/>' +
+        '</div>' +
+        '<div class="media-body"> ' +
+        '<h4 class="media-heading">' + name + '</h4> ' +
+        '<p class="lead small">' + duration + '</p>' +
+        '</div>' +
+        '</div>';
 }
-
 
 function cargarReproductor(entryId) {
 	$.get( "php/Backend.php?action=printVideo&arg0="+entryId, function(iframe) {

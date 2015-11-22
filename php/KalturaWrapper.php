@@ -35,7 +35,7 @@ final class KalturaWrapper {
 	
 	public function printVideo($entryId)
 	{
-		echo "<iframe src=\"".self::$kalturaURL."/p/".self::$partnerId."/sp/".self::$partnerId."00/embedIframeJs/uiconf_id/".$this->uiConf."/partner_id/".self::$partnerId."?iframeembed=true&playerId=".$this->uiConf."&entry_id=" . $entryId . "\" width=\"400\" height=\"330\" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder=\"0\"></iframe>";
+        echo "<iframe class=\"embed-responsive-item\" src=\"" . self::$kalturaURL . "/p/" . self::$partnerId . "/sp/" . self::$partnerId . "00/embedIframeJs/uiconf_id/" . $this->uiConf . "/partner_id/" . self::$partnerId . "?iframeembed=true&playerId=" . $this->uiConf . "&entry_id=" . $entryId . "\" width=\"400\" height=\"330\" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder=\"0\"></iframe>";
 	}
 
 	public function printThumb($entryId)
@@ -50,8 +50,12 @@ final class KalturaWrapper {
 			$filter->categoriesMatchAnd = $category;
 			$result = array();
 			$listado = $this->kalturaClient->media->listAction($filter, null);
+            $cont = 0;
 			foreach($listado->objects as $obj) {
-				$result[] = $obj->id;
+                $result[$cont]["entryId"] = $obj->id;
+                $result[$cont]["duration"] = $obj->duration;
+                $result[$cont]["name"] = $obj->name;
+                $cont = $cont + 1;
 			}
 			return json_encode($result);
 		} catch (Exception $ex) {

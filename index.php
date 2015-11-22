@@ -25,6 +25,5 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="php/KalturaClientBase.php"></script>
 <script src="php/KalturaClient.php"></script>
-<script src="php/php01.php"></script>
 </body>
 </html>
